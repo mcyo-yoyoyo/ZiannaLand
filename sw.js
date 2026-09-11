@@ -1,0 +1,5 @@
+const CACHE='zianna-land-phase3-v3';
+const CORE=['./','./index.html','./app.css?v=3','./app.js?v=4','./content/program.js?v=3','./content/readers.js','./content/dialogues.js','./content/manifest.json','./manifest.webmanifest','./assets/zianna-land-characters-v2.png','./icons/icon.svg','./icons/icon-192.png','./icons/icon-512.png'];
+self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(CORE)).then(()=>self.skipWaiting())));
+self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
+self.addEventListener('fetch',event=>{const request=event.request;if(request.method!=='GET')return;if(request.destination==='video'||new URL(request.url).origin!==location.origin){event.respondWith(fetch(request));return}event.respondWith(caches.match(request).then(hit=>hit||fetch(request).then(response=>{const copy=response.clone();caches.open(CACHE).then(cache=>cache.put(request,copy));return response}).catch(()=>caches.match('./index.html'))))});

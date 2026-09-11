@@ -1,0 +1,5 @@
+{
+  "name":"Zianna Land · English grows here","short_name":"Zianna Land","description":"连续故事、分级阅读与每周创作组成的儿童英语成长课程",
+  "start_url":"./","scope":"./","display":"standalone","orientation":"portrait-primary","background_color":"#fbf7ed","theme_color":"#225b47","lang":"zh-CN",
+  "icons":[{"src":"icons/icon-192.png","sizes":"192x192","type":"image/png"},{"src":"icons/icon-512.png","sizes":"512x512","type":"image/png"},{"src":"icons/icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+}
